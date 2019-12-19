@@ -1,5 +1,7 @@
 package basicoperation
 
+import "errors"
+
 // Add returns the summation of two integers
 func Add(a, b int) int {
 	return a + b
@@ -16,6 +18,9 @@ func Mul(a, b int) int {
 }
 
 // Div returns the division of two integers
-func Div(a, b int) int {
-	return a / b
+func Div(a, b int) (int, error) {
+	if b == 0 {
+		return 0, errors.New("ERROR: integer / 0 is Infinit")
+	}
+	return a / b, nil
 }

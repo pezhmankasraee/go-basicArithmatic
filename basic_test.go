@@ -28,8 +28,15 @@ func TestMul(t *testing.T) {
 
 // TestDiv tests the function Div
 func TestDiv(t *testing.T) {
-	divAnswer := Div(20, 20)
+	divAnswer, _ := Div(20, 20)
 	if divAnswer != 1 {
 		t.Errorf(" [ Error ] : Expected 1, Actual %d", divAnswer)
 	}
+
+	divA, actualErr := Div(10, 0)
+	expectedErr := "ERROR: integer / 0 is Infinit"
+	if divA != 0 || actualErr.Error() != expectedErr {
+		t.Errorf("Expected: %s\nActual Error Message: %s", expectedErr, actualErr)
+	}
+
 }
