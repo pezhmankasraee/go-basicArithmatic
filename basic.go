@@ -2,27 +2,33 @@ package basicoperation
 
 import "errors"
 
+// OperatorPair keeps both operators
+type OperatorPair struct {
+	A float64
+	B float64
+}
+
 // Add returns the summation of two float64
-func Add(a, b float64) float64 {
-	return a + b
+func (o OperatorPair) Add() float64 {
+	return o.A + o.B
 }
 
 // Sub returns the subtraction of two float64
-func Sub(a, b float64) float64 {
-	return a - b
+func (o OperatorPair) Sub() float64 {
+	return o.A - o.B
 }
 
 // Mul returns the multiplication of two float64
-func Mul(a, b float64) float64 {
-	return a * b
+func (o OperatorPair) Mul() float64 {
+	return o.A * o.B
 }
 
 // Div returns the division of two float64
-func Div(a, b float64) (float64, error) {
-	if a == 0 && b == 0 {
+func (o OperatorPair) Div() (float64, error) {
+	if o.A == 0 && o.B == 0 {
 		return 0, errors.New("ERROR: 0 / 0 is not defined")
-	} else if b == 0 {
+	} else if o.B == 0 {
 		return 0, errors.New("ERROR: float64 / 0 is Infinit")
 	}
-	return a / b, nil
+	return o.A / o.B, nil
 }
