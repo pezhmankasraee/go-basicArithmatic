@@ -39,4 +39,9 @@ func TestDiv(t *testing.T) {
 		t.Errorf("Expected: %s\nActual Error Message: %s", expectedErr, actualErr)
 	}
 
+	divA, actualErr = Div(0, 0)
+	expectedErr = "ERROR: 0 / 0 is not defined"
+	if divA != 0 || actualErr.Error() != expectedErr {
+		t.Errorf("Expected: %s\nActual Error Message: %s", expectedErr, actualErr)
+	}
 }
